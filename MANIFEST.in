@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include kalla *.css
+recursive-include kalla *.csv
+recursive-include kalla *.html
+recursive-include kalla *.ico
+recursive-include kalla *.js
+recursive-include kalla *.json
+recursive-include kalla *.md
+recursive-include kalla *.png
+recursive-include kalla *.py
+recursive-include kalla *.svg
+recursive-include kalla *.txt
+recursive-exclude kalla *.pyc

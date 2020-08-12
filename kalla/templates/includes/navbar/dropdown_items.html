@@ -1,0 +1,9 @@
+{% extends 'frappe/templates/includes/navbar/dropdown_items.html' %}
+
+{% block navbar_right_extension %}
+<li class="cart-icon">
+			<a href="/cart">
+				{{ _("Cart") }} <span class="badge-wrapper" id="cart-count"></span>
+			</a>
+			</li>
+{% endblock %}
