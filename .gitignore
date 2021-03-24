@@ -4,3 +4,5 @@
 *.swp
 tags
 kalla/docs/current
+kalla/templates/pages/__pycache__/
+kalla/www/__pycache__/
