@@ -1,0 +1,51 @@
+<div class="card mb-3">
+	<div class="row no-gutters">
+		<div class="col-md-3">
+			<div class="card-body">
+				<a class="no-underline" href="/{{ item.route }}">
+					<img class="website-image" src="{{ item.website_image or item.image or 'no-image.jpg' }}" alt="{{ item.item_name }}">
+				</a>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="card-body">
+				<h5 class="card-title">
+					<a class="text-dark" href="/{{ item.route }}">
+						{{ item.item_name or item.name }}
+					</a>
+				</h5>
+				<p class="card-text">
+					{{ item.website_description or item.description or '<i class="text-muted">No description</i>' }}
+				</p>
+				<a href="/{{ item.route }}" class="btn btn-sm btn-light">{{ _('More details') }}</a>
+				<p align="right" class="card-text"><button
+                                	data-item-code="{{item.item_code}}"
+                                	class="btn btn-outline-primary btn-add-to-cart"
+                        	>
+                                	{{ _("Add to Cart") }}
+				</button></p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+        frappe.ready(() => {
+                $('.page_content').on('click', '.btn-add-to-cart', (e) => {
+                        //update_modified=False;
+			const $btn = $(e.currentTarget);
+                        $btn.prop('disabled', true);
+                        const item_code = $btn.data('item-code');
+                        erpnext.shopping_cart.update_cart({
+                                item_code,
+                                qty: 1,
+                                callback(r) {
+                                        $btn.prop('disabled', false)//;
+                                        //if (r.message) {
+                                        //        $('.btn-add-to-cart, .btn-view-in-cart').toggleClass('hidden');
+                                        //}
+                                }
+                        });
+                });
+        });
+</script>
